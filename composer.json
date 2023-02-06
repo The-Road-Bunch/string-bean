@@ -1,0 +1,22 @@
+{
+    "name": "danmcadams/stringy",
+    "description": "A collection of functions for formatting strings",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Danmcadams\\Stringy\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Dan McAdams"
+        }
+    ],
+    "require": {
+        "php": "^8.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    }
+}
