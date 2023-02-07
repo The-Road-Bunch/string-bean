@@ -1,16 +1,16 @@
 {
-    "name": "danmcadams/stringy",
+    "name": "theroadbunch/string-bean",
     "description": "A collection of functions for formatting strings",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Danmcadams\\Stringy\\": "src/"
+            "RoadBunch\\StringBean\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Danmcadams\\Stringy\\Tests\\": "tests/"
+            "RoadBunch\\StringBean\\Tests\\": "tests/"
         }
     },
     "authors": [
