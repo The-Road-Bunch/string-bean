@@ -1,4 +1,5 @@
 # StringBean
+[![Build Status](https://scrutinizer-ci.com/g/The-Road-Bunch/string-bean/badges/build.png?b=main)](https://scrutinizer-ci.com/g/The-Road-Bunch/string-bean/build-status/main)
 
 Using a variety of provided formatters, you can format strings and arrays of strings quickly and easily.
 
@@ -33,7 +34,6 @@ These.Are_Some-Words_To Uppercase
 ```
 
 ### Trimmer Usage
-
 ```php
 <?php
 
@@ -46,13 +46,16 @@ echo $formatter->format($string);
 // output
 is a string of words
 
+// Note: Trimmers are case-sensitive
+
 use RoadBunch\StringBean\PrefixTrimmer;
 
-$string = 'This is a string of words';
-echo PrefixTrimmer::trim('This', $string);
+$string = 'Another set of words';
+$formatter = new PrefixTrimmer('another');
+echo $formatter->format($string);
 
 // output
-is a string of words
+Another set of words
 ```
 
 ### Format/Trim an array of strings
@@ -60,46 +63,41 @@ is a string of words
 ```php
 <?php
 
-use RoadBunch\StringBean\ArrayFormatter;
-use RoadBunch\StringBean\UpperCaseWordsFormatter;
+use RoadBunch\StringBean\BulkFormatter;
 use RoadBunch\StringBean\SplitCamelCaseFormatter;
-use RoadBunch\StringBean\PrefixTrimmer;
-use RoadBunch\StringBean\SuffixTrimmer;
+use RoadBunch\StringBean\UpperCaseWordsFormatter;
+use RoadBunch\StringBean\AbstractFormatter;
 
-$arr = ['This_is_a_string', 'ThisIsAnotherString', 'This Is Another One'];
-
-$formatted = ArrayFormatter::format(
-    $arr,
-    new UpperCaseWordsFormatter(),
+$formatter = new BulkFormatter(
     new SplitCamelCaseFormatter(),
-    new PrefixTrimmer('This'),
-    new SuffixTrimmer('One'),
+    new UpperCaseWordsFormatter(),
+    new class extends AbstractFormatter {
+        public function format(string $string) : string{
+            return "~={$string}=~";
+        }
+    }
 );
+$result = $formatter->format('aStringToFormat');
 
-print_r($formatted);
+echo $result;
 
 // output
-Array
-(
-    [0] => _Is_A_String
-    [1] => Is Another String
-    [2] => Is Another
-)
+~=A String To Format=~
 ```
 
 ### Create your own formatter
 
-**implement** `RoadBunch\StringBean\FormatterInterface`
-
 ```php
 <?php
 
-// obviously simple example
-class LowerCaseFormatter implements \RoadBunch\StringBean\FormatterInterface
+use RoadBunch\StringBean\AbstractFormatter;
+
+class LowerCaseFormatter extends AbstractFormatter
 {
-    public function format(array $string): array
+    public function format(array $string): string
     {
-        return strtolower($string)
+        // obviously simple example
+        return strtolower($val);
     }
 };
 ```
