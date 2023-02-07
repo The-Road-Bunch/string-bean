@@ -13,7 +13,7 @@ class RemovePostfixManipulatorTest extends TestCase
     public function testRemovePostfix(): void
     {
         $string = 'GetEndpoint';
-        $manipulated = RemovePostfixManipulator::removePostFix('Endpoint', $string);
+        $manipulated = RemovePostfixManipulator::trim('Endpoint', $string);
 
         $this->assertEquals('Get', $manipulated);
     }
@@ -21,7 +21,7 @@ class RemovePostfixManipulatorTest extends TestCase
     public function testRemovePrefixPostfixNotFound(): void
     {
         $string = 'Get';
-        $manipulated = RemovePostfixManipulator::removePostFix('Endpoint', $string);
+        $manipulated = RemovePostfixManipulator::trim('Endpoint', $string);
 
         $this->assertEquals('Get', $manipulated);
     }
