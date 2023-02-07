@@ -1,12 +1,18 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace RoadBunch\StringBean;
 
 
-readonly class UpperCaseWordsFormatter implements FormatterInterface
+class UpperCaseWordsFormatter extends AbstractFormatter
 {
+    public function __construct(
+        private string|array $delimiter = [" ", "-", "_", "."],
+    ) {}
+
     public function format(string $string): string
     {
-        return ucwords($string, implode('', [" ", "-", "_", "."]));
+        $delimiter = is_string($this->delimiter) ? [$this->delimiter] : $this->delimiter;
+        return ucwords($string, implode('', $delimiter));
     }
 }

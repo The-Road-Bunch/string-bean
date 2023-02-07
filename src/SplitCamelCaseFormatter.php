@@ -1,9 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace RoadBunch\StringBean;
 
 
-readonly class SplitCamelCaseFormatter implements FormatterInterface
+class SplitCamelCaseFormatter extends AbstractFormatter
 {
     public function format(string $string): string
     {
