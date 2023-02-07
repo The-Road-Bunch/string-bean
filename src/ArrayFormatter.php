@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Danmcadams\Stringy\Formatter;
+namespace RoadBunch\StringBean;
 
 
-class ArrayFormatter
+readonly class ArrayFormatter
 {
     public static function format(array $words, FormatterInterface ...$formatter): array
     {

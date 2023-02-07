@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Danmcadams\Stringy\Tests\Formatter;
+namespace RoadBunch\StringBean\Tests;
 
-use Danmcadams\Stringy\Formatter\UpperCaseWordsFormatter;
 use Generator;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
+use RoadBunch\StringBean\UpperCaseWordsFormatter;
 
 #[CoversClass(UpperCaseWordsFormatter::class)]
 final class UpperCaseWordsFormatterTest extends TestCase
@@ -14,7 +14,8 @@ final class UpperCaseWordsFormatterTest extends TestCase
     #[DataProvider('wordsProvider')]
     public function testConvertsLowerCaseToUpperCase(string $testString, string $expected)
     {
-        $this->assertEquals($expected, UpperCaseWordsFormatter::format($testString));
+        $formatter = new UpperCaseWordsFormatter();
+        $this->assertEquals($expected, $formatter->format($testString));
     }
 
     public static function wordsProvider(): Generator
