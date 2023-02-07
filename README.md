@@ -1,4 +1,5 @@
 # StringBean
+
 [![Build Status](https://scrutinizer-ci.com/g/The-Road-Bunch/string-bean/badges/build.png?b=main)](https://scrutinizer-ci.com/g/The-Road-Bunch/string-bean/build-status/main)
 
 Using a variety of provided formatters, you can format strings and arrays of strings quickly and easily.
@@ -8,8 +9,9 @@ Using a variety of provided formatters, you can format strings and arrays of str
 | Formatter                           | Ex: original               | Ex: formatted              |
 |:------------------------------------|:---------------------------|:---------------------------|
 | SplitCamelCaseWordsFormatter::class | splitCamelCase             | split Camel Case           |
-| UpperCaseFormatter::class           | upper case formatter       | UPPER CASE FORMATTER       |
 | UpperCaseWordsFormatter::class      | upper case_words formatter | Upper Case_Words Formatter |
+| PrefixTrimmer::class                | GetEndpoint                | Endpoint                   |
+| SuffixTrimmer::class                | GetEndpoint                | Get                        |
 
 _Note:_ `SplitCamelCaseWordsFormatter` can split camel case strings with acronyms and abbreviations
 
@@ -34,6 +36,7 @@ These.Are_Some-Words_To Uppercase
 ```
 
 ### Trimmer Usage
+
 ```php
 <?php
 
@@ -92,11 +95,11 @@ echo $result;
 
 use RoadBunch\StringBean\AbstractFormatter;
 
+// obviously simple example
 class LowerCaseFormatter extends AbstractFormatter
 {
-    public function format(array $string): string
+    public function format(string $string): string
     {
-        // obviously simple example
         return strtolower($val);
     }
 };
