@@ -4,22 +4,17 @@ declare(strict_types=1);
 namespace RoadBunch\StringBean;
 
 
-readonly class PrefixTrimmer implements TrimmerInterface, FormatterInterface
+class PrefixTrimmer extends AbstractFormatter
 {
     public function __construct(
-        private string $needle
+        private readonly string $prefix
     ) {}
 
     public function format(string $string): string
     {
-        return self::trim($string, $this->needle);
-    }
-
-    public static function trim(string $haystack, string $needle): string
-    {
-        if (str_starts_with($haystack, $needle)) {
-            return ltrim(substr($haystack, strlen($needle)));
+        if (str_starts_with($string, $this->prefix)) {
+            return ltrim(substr($string, strlen($this->prefix)));
         }
-        return $haystack;
+        return $string;
     }
 }

@@ -4,22 +4,17 @@ declare(strict_types=1);
 namespace RoadBunch\StringBean;
 
 
-readonly class SuffixTrimmer implements TrimmerInterface, FormatterInterface
+class SuffixTrimmer extends AbstractFormatter
 {
     public function __construct(
-        private string $needle
+        private readonly string $suffix
     ) {}
 
     public function format(string $string): string
     {
-        return self::trim($string, $this->needle);
-    }
-
-    public static function trim(string $haystack, string $needle): string
-    {
-        if (str_ends_with($haystack, $needle)) {
-            return rtrim(substr($haystack, 0, strlen($haystack) - strlen($needle)));
+        if (str_ends_with($string, $this->suffix)) {
+            return rtrim(substr($string, 0, strlen($string) - strlen($this->suffix)));
         }
-        return $haystack;
+        return $string;
     }
 }

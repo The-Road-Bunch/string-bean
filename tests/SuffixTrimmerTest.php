@@ -13,32 +13,36 @@ class SuffixTrimmerTest extends TestCase
     public function testTrimSuffix(): void
     {
         $string = 'GetEndpoint';
-        $trimmed = SuffixTrimmer::trim($string, 'Endpoint');
+        $formatter = new SuffixTrimmer('Endpoint');
 
-        $this->assertEquals('Get', $trimmed);
+        $result = $formatter->format($string);
+        $this->assertEquals('Get', $result);
     }
 
     public function testTrimSuffixSuffixNotFound(): void
     {
         $string = 'Get';
-        $trimmed = SuffixTrimmer::trim($string, 'Endpoint');
+        $formatter = new SuffixTrimmer('Endpoint');
 
-        $this->assertEquals('Get', $trimmed);
+        $result = $formatter->format($string);
+        $this->assertEquals('Get', $result);
     }
 
     public function testTrimSuffixTrimsWhiteSpaceInFrontOfSuffix(): void
     {
         $string = 'Some Words';
-        $trimmed = SuffixTrimmer::trim($string, 'Words');
+        $formatter = new SuffixTrimmer('Words');
 
-        $this->assertEquals('Some', $trimmed);
+        $result = $formatter->format($string);
+        $this->assertEquals('Some', $result);
     }
 
-    public function testTrimSuffixUsingFormatMethod(): void
+    public function testTrimList(): void
     {
-        $string = 'GetEndpoint';
+        $list = ['HedgeTrimmer', 'StringTrimmer', 'BeardTrimmer'];
+        $formatter = new SuffixTrimmer('Trimmer');
 
-        $trimmed = (new SuffixTrimmer('Endpoint'))->format($string);
-        $this->assertEquals('Get', $trimmed);
+        $result = $formatter->formatList(...$list);
+        $this->assertEquals(['Hedge', 'String', 'Beard'], $result);
     }
 }
