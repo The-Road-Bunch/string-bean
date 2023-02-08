@@ -12,20 +12,23 @@ Using a variety of provided formatters, you can format strings and arrays of str
 ## Usage
 
 ### Formatters
+Format a single string
 ```php
 <?php
 
 use \RoadBunch\StringBean\UpperCaseWordsFormatter;
 
-$string = 'these.are_some-words_to uppercase';
 $formatter = new UpperCaseWordsFormatter();
-echo $formatter->format($string);
 
-// output
+/* Format a string */
+echo $formatter->format('these.are_some-words_to uppercase');
+
+/* Format a list of strings */
+print_r($formatter->formatList('this will be upper case', 'and.so.will.this'));
+```
+_output_:
+```shell
 These.Are_Some-Words_To Uppercase
-
-$result = $formatter->formatList('this will be upper case', 'and.so.will.this');
-print_r($result);
 
 Array 
 (
@@ -54,23 +57,19 @@ Array
 
 use RoadBunch\StringBean\PrefixTrimmer;
 
-$string = 'This is a string of words';
 $formatter = new PrefixTrimmer('This');
-echo $formatter->format($string);
 
-// output
+/* Trim a word off the front of a string */
+echo $formatter->format('This is a string of words');
+
+/* Trimmers are case-sensitive */
+echo $formatter->format('this is a string of words');
+```
+_output_:
+```shell
 is a string of words
 
-// Note: Trimmers are case-sensitive
-
-use RoadBunch\StringBean\PrefixTrimmer;
-
-$string = 'Another set of words';
-$formatter = new PrefixTrimmer('another');
-echo $formatter->format($string);
-
-// output
-Another set of words
+this is a string of words
 ```
 
 #### Available Trimmers
@@ -101,16 +100,13 @@ $formatter = new CombinationFormatter(
         }
     }
 );
-$result = $formatter->format('aStringToFormat');
+echo $formatter->format('aStringToFormat');
 
-echo $result;
-
-// output
+print_r($formatter->formatList('aStringToFormat', 'wild'));
+```
+_output_:
+```shell
 ~=A String To Format=~
-
-
-$result = $formatter->formatList('aStringToFormat', 'wild');
-print_r($result);
 
 Array
 (
