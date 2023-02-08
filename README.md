@@ -9,9 +9,9 @@ Using a variety of provided formatters, you can format strings and arrays of str
 ## Installation
 `composer require theroadbunch/string-bean`
 
-## Formatters
+## Usage
 
-### Usage
+### Formatters
 ```php
 <?php
 
@@ -23,9 +23,18 @@ echo $formatter->format($string);
 
 // output
 These.Are_Some-Words_To Uppercase
+
+$result = $formatter->formatList('this will be upper case', 'and.so.will.this');
+print_r($result);
+
+Array 
+(
+    [0] => 'This Will Be Upper Case'
+    [1] => 'And.So.Will.This'
+)
 ```
 
-### Available Formatters
+#### Available Formatters
 | Formatter                           | Ex: original               | Ex: formatted              |
 |:------------------------------------|:---------------------------|:---------------------------|
 | SplitCamelCaseWordsFormatter::class | splitCamelCase             | split Camel Case           |
@@ -39,9 +48,7 @@ These.Are_Some-Words_To Uppercase
 | SplitCamelCaseWordsFormatter::class | evenT.H.I.S.Works | even T.H.I.S. Works |
 
 
-## Trimmers
-
-### Usage
+### Trimmers
 ```php
 <?php
 
@@ -66,7 +73,7 @@ echo $formatter->format($string);
 Another set of words
 ```
 
-### Available Trimmers
+#### Available Trimmers
 _Note: Trimmers implement the same interface as Formatters_: `FormatterInterface`  
 
 | Trimmer       |  Trim Value | Ex: original  | Ex: formatted |
@@ -75,20 +82,19 @@ _Note: Trimmers implement the same interface as Formatters_: `FormatterInterface
 | SuffixTrimmer | ula1        | Formula1      | Form          |
 
 
-
-### Format/Trim an array of strings
-
+### Use a combination of Formatters
 ```php
 <?php
 
-use RoadBunch\StringBean\BulkFormatter;
+use RoadBunch\StringBean\CombinationFormatter;
 use RoadBunch\StringBean\SplitCamelCaseFormatter;
 use RoadBunch\StringBean\UpperCaseWordsFormatter;
 use RoadBunch\StringBean\AbstractFormatter;
 
-$formatter = new BulkFormatter(
+$formatter = new CombinationFormatter(
     new SplitCamelCaseFormatter(),
     new UpperCaseWordsFormatter(),
+    // feel free to create a formatter on the fly
     new class extends AbstractFormatter {
         public function format(string $string) : string{
             return "~={$string}=~";
@@ -101,6 +107,16 @@ echo $result;
 
 // output
 ~=A String To Format=~
+
+
+$result = $formatter->formatList('aStringToFormat', 'wild');
+print_r($result);
+
+Array
+(
+    [0] => ~=A String To Format=~
+    [1] => ~=Wild=~
+)
 ```
 
 ### Create your own formatter
