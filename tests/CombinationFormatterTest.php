@@ -5,22 +5,22 @@ namespace RoadBunch\StringBean\Tests;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use RoadBunch\StringBean\BulkFormatter;
+use RoadBunch\StringBean\CombinationFormatter;
 use RoadBunch\StringBean\SplitCamelCaseFormatter;
 use RoadBunch\StringBean\UpperCaseWordsFormatter;
 
-#[CoversClass(BulkFormatter::class)]
-final class BulkFormatterTest extends TestCase
+#[CoversClass(CombinationFormatter::class)]
+final class CombinationFormatterTest extends TestCase
 {
     public function testNoFormattersProvidedThrowsException(): void
     {
         $this->expectException(\LogicException::class);
-        new BulkFormatter();
+        new CombinationFormatter();
     }
 
     public function testFormatWithMultipleFormatters(): void
     {
-        $formatter = new BulkFormatter(
+        $formatter = new CombinationFormatter(
             new SplitCamelCaseFormatter(),
             new UpperCaseWordsFormatter(),
         );
@@ -30,7 +30,7 @@ final class BulkFormatterTest extends TestCase
 
     public function testFormatList(): void
     {
-        $formatter = new BulkFormatter(
+        $formatter = new CombinationFormatter(
             new SplitCamelCaseFormatter(),
             new UpperCaseWordsFormatter(),
         );

@@ -1,11 +1,10 @@
 <?php
 declare(strict_types=1);
 
-
 namespace RoadBunch\StringBean;
 
 
-class BulkFormatter extends AbstractFormatter
+class CombinationFormatter extends AbstractFormatter
 {
     private array $formatters;
 
