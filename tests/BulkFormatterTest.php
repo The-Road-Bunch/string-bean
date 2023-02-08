@@ -1,17 +1,16 @@
 <?php
+declare(strict_types=1);
 
 namespace RoadBunch\StringBean\Tests;
 
 use PHPUnit\Framework\Attributes\CoversClass;
-use RoadBunch\StringBean\AbstractFormatter;
-use RoadBunch\StringBean\BulkFormatter;
 use PHPUnit\Framework\TestCase;
+use RoadBunch\StringBean\BulkFormatter;
 use RoadBunch\StringBean\SplitCamelCaseFormatter;
-use RoadBunch\StringBean\SuffixTrimmer;
 use RoadBunch\StringBean\UpperCaseWordsFormatter;
 
 #[CoversClass(BulkFormatter::class)]
-class BulkFormatterTest extends TestCase
+final class BulkFormatterTest extends TestCase
 {
     public function testNoFormattersProvidedThrowsException(): void
     {

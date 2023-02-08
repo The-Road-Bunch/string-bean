@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 use RoadBunch\StringBean\SuffixTrimmer;
 
 #[CoversClass(SuffixTrimmer::class)]
-class SuffixTrimmerTest extends TestCase
+final class SuffixTrimmerTest extends TestCase
 {
     public function testTrimSuffix(): void
     {

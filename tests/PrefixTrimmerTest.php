@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 use RoadBunch\StringBean\PrefixTrimmer;
 
 #[CoversClass(PrefixTrimmer::class)]
-class PrefixTrimmerTest extends TestCase
+final class PrefixTrimmerTest extends TestCase
 {
     public function testRemovePrefix(): void
     {

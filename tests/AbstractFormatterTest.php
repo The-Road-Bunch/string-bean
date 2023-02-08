@@ -1,11 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace RoadBunch\StringBean\Tests;
 
-use RoadBunch\StringBean\AbstractFormatter;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use RoadBunch\StringBean\AbstractFormatter;
 
-class AbstractFormatterTest extends TestCase
+#[CoversClass(AbstractFormatter::class)]
+final class AbstractFormatterTest extends TestCase
 {
     public function testFormatList(): void
     {
