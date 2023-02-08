@@ -1,27 +1,16 @@
-# StringBean
-
-[![Build Status](https://scrutinizer-ci.com/g/The-Road-Bunch/string-bean/badges/build.png?b=main)](https://scrutinizer-ci.com/g/The-Road-Bunch/string-bean/build-status/main)
-
+# StringBean [![Build Status](https://scrutinizer-ci.com/g/The-Road-Bunch/string-bean/badges/build.png?b=main)](https://scrutinizer-ci.com/g/The-Road-Bunch/string-bean/build-status/main)
 Using a variety of provided formatters, you can format strings and arrays of strings quickly and easily.
 
-### Available Formatters
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/The-Road-Bunch/string-bean/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/The-Road-Bunch/string-bean/?branch=main)
 
-| Formatter                           | Ex: original               | Ex: formatted              |
-|:------------------------------------|:---------------------------|:---------------------------|
-| SplitCamelCaseWordsFormatter::class | splitCamelCase             | split Camel Case           |
-| UpperCaseWordsFormatter::class      | upper case_words formatter | Upper Case_Words Formatter |
-| PrefixTrimmer::class                | GetEndpoint                | Endpoint                   |
-| SuffixTrimmer::class                | GetEndpoint                | Get                        |
 
-_Note:_ `SplitCamelCaseWordsFormatter` can split camel case strings with acronyms and abbreviations
+## Installation
+`composer require theroadbunch/string-bean`
 
-| Formatter                           | Ex: original      | Ex: formatted       |
-|-------------------------------------|-------------------|---------------------|
-| SplitCamelCaseWordsFormatter::class | ThisWILLWork      | This WILL Work      |
-| SplitCamelCaseWordsFormatter::class | evenT.H.I.S.Works | even T.H.I.S. Works |
+## Formatters
 
-### Formatter Usage
-
+### Usage
 ```php
 <?php
 
@@ -35,8 +24,23 @@ echo $formatter->format($string);
 These.Are_Some-Words_To Uppercase
 ```
 
-### Trimmer Usage
+### Available Formatters
+| Formatter                           | Ex: original               | Ex: formatted              |
+|:------------------------------------|:---------------------------|:---------------------------|
+| SplitCamelCaseWordsFormatter::class | splitCamelCase             | split Camel Case           |
+| UpperCaseWordsFormatter::class      | upper case_words formatter | Upper Case_Words Formatter |
 
+`SplitCamelCaseWordsFormatter` can split CamelCase strings with acronyms and abbreviations.
+
+| Formatter                           | Ex: original      | Ex: formatted       |
+|-------------------------------------|-------------------|---------------------|
+| SplitCamelCaseWordsFormatter::class | ThisWILLWork      | This WILL Work      |
+| SplitCamelCaseWordsFormatter::class | evenT.H.I.S.Works | even T.H.I.S. Works |
+
+
+## Trimmers
+
+### Usage
 ```php
 <?php
 
@@ -60,6 +64,16 @@ echo $formatter->format($string);
 // output
 Another set of words
 ```
+
+### Available Trimmers
+_Note: Trimmers implement the same interface as Formatters_: `FormatterInterface`  
+
+| Trimmer       |  Trim Value | Ex: original  | Ex: formatted |
+|:--------------|:------------|:--------------|:--------------|
+| PrefixTrimmer | pref_       | pref_A String | A String      |
+| SuffixTrimmer | ula1        | Formula1      | Form          |
+
+
 
 ### Format/Trim an array of strings
 
