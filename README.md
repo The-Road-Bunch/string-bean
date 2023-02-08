@@ -1,8 +1,9 @@
-# StringBean [![Build Status](https://scrutinizer-ci.com/g/The-Road-Bunch/string-bean/badges/build.png?b=main)](https://scrutinizer-ci.com/g/The-Road-Bunch/string-bean/build-status/main)
+# StringBean
 Using a variety of provided formatters, you can format strings and arrays of strings quickly and easily.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://scrutinizer-ci.com/g/The-Road-Bunch/string-bean/badges/build.png?b=main)](https://scrutinizer-ci.com/g/The-Road-Bunch/string-bean/build-status/main)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/The-Road-Bunch/string-bean/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/The-Road-Bunch/string-bean/?branch=main)
+[![License: MIT](https://img.shields.io/badge/License-MIT-2222CC.svg)](https://opensource.org/licenses/MIT)
 
 
 ## Installation
