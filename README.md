@@ -95,8 +95,8 @@ $formatter = new CombinationFormatter(
     new UpperCaseWordsFormatter(),
     // feel free to create a formatter on the fly
     new class extends AbstractFormatter {
-        public function format(string $string) : string{
-            return "~={$string}=~";
+        public function format(string $subject) : string{
+            return "~={$subject}=~";
         }
     }
 );
@@ -122,12 +122,18 @@ Array
 
 use RoadBunch\StringBean\AbstractFormatter;
 
-// obviously simple example
-class LowerCaseFormatter extends AbstractFormatter
+class L33tSpeakFormatter extends AbstractFormatter
 {
-    public function format(string $string): string
+    public function format(string $subject): string
     {
-        return strtolower($val);
+        return str_ireplace(['T', 'E', 'A'], ['7', '3', '4'], strtoupper($subject));
     }
 };
+
+$formatter = new L33tSpeakFormatter();
+echo $formatter->format('leet speak');
+```
+_output_:
+```shell
+L337 SP34K
 ```
