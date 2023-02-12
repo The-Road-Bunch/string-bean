@@ -31,9 +31,9 @@ final class SplitCamelCaseFormatterTest extends TestCase
     public function testSplitMultipleStrings(): void
     {
         $formatter = new SplitCamelCaseFormatter();
-        $strings = ['TestStringOne', 'TestStringTwo', 'TestStringThree'];
+        $subjects = ['TestStringOne', 'TestStringTwo', 'TestStringThree'];
 
-        $result = $formatter->formatList(...$strings);
+        $result = $formatter->formatList(...$subjects);
         $this->assertEquals(['Test String One', 'Test String Two', 'Test String Three'], $result);
     }
 }

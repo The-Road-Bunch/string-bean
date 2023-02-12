@@ -10,11 +10,11 @@ class SuffixTrimmer extends AbstractFormatter
         private readonly string $suffix
     ) {}
 
-    public function format(string $string): string
+    public function format(string $subject): string
     {
-        if (str_ends_with($string, $this->suffix)) {
-            return rtrim(substr($string, 0, strlen($string) - strlen($this->suffix)));
+        if (str_ends_with($subject, $this->suffix)) {
+            return rtrim(substr($subject, 0, strlen($subject) - strlen($this->suffix)));
         }
-        return $string;
+        return $subject;
     }
 }

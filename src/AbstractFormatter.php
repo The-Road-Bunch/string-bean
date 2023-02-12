@@ -6,12 +6,12 @@ namespace RoadBunch\StringBean;
 
 abstract class AbstractFormatter implements FormatterInterface
 {
-    abstract public function format(string $string): string;
+    abstract public function format(string $subject): string;
 
-    public function formatList(string ...$string): array
+    public function formatList(string ...$subject): array
     {
         return array_map(function($val) {
             return $this->format($val);
-        }, $string);
+        }, $subject);
     }
 }

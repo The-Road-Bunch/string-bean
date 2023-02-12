@@ -14,9 +14,9 @@ final class AbstractFormatterTest extends TestCase
     {
         $formatter = new class extends AbstractFormatter
         {
-            public function format(string $string): string
+            public function format(string $subject): string
             {
-                return strtolower($string);
+                return strtolower($subject);
             }
         };
         $results = $formatter->formatList('A STRING TO LOWER', 'And Another');

@@ -13,27 +13,27 @@ final class PrefixTrimmerTest extends TestCase
     public function testRemovePrefix(): void
     {
         $formatter = new PrefixTrimmer('Get');
-        $string = 'GetEndpoint';
+        $subject = 'GetEndpoint';
 
-        $result = $formatter->format($string);
+        $result = $formatter->format($subject);
         $this->assertEquals('Endpoint', $result);
     }
 
     public function testRemovePrefixPrefixNotFound(): void
     {
         $formatter = new PrefixTrimmer('Get');
-        $string = 'Endpoint';
+        $subject = 'Endpoint';
 
-        $result = $formatter->format($string);
+        $result = $formatter->format($subject);
         $this->assertEquals('Endpoint', $result);
     }
 
     public function testTrimPrefixTrimsWhiteSpaceBehindPrefix(): void
     {
         $formatter = new PrefixTrimmer('Some');
-        $string = 'Some Words';
+        $subject = 'Some Words';
 
-        $result = $formatter->format($string);
+        $result = $formatter->format($subject);
         $this->assertEquals('Words', $result);
     }
 }

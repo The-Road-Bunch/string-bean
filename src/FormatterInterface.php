@@ -6,6 +6,6 @@ namespace RoadBunch\StringBean;
 
 interface FormatterInterface
 {
-    public function format(string $string): string;
-    public function formatList(string ...$string): array;
+    public function format(string $subject): string;
+    public function formatList(string ...$subject): array;
 }

@@ -10,9 +10,9 @@ class UpperCaseWordsFormatter extends AbstractFormatter
         private string|array $delimiter = [" ", "-", "_", "."],
     ) {}
 
-    public function format(string $string): string
+    public function format(string $subject): string
     {
         $delimiter = is_string($this->delimiter) ? [$this->delimiter] : $this->delimiter;
-        return ucwords($string, implode('', $delimiter));
+        return ucwords($subject, implode('', $delimiter));
     }
 }

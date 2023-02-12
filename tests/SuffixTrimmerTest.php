@@ -12,28 +12,28 @@ final class SuffixTrimmerTest extends TestCase
 {
     public function testTrimSuffix(): void
     {
-        $string = 'GetEndpoint';
+        $subject = 'GetEndpoint';
         $formatter = new SuffixTrimmer('Endpoint');
 
-        $result = $formatter->format($string);
+        $result = $formatter->format($subject);
         $this->assertEquals('Get', $result);
     }
 
     public function testTrimSuffixSuffixNotFound(): void
     {
-        $string = 'Get';
+        $subject = 'Get';
         $formatter = new SuffixTrimmer('Endpoint');
 
-        $result = $formatter->format($string);
+        $result = $formatter->format($subject);
         $this->assertEquals('Get', $result);
     }
 
     public function testTrimSuffixTrimsWhiteSpaceInFrontOfSuffix(): void
     {
-        $string = 'Some Words';
+        $subject = 'Some Words';
         $formatter = new SuffixTrimmer('Words');
 
-        $result = $formatter->format($string);
+        $result = $formatter->format($subject);
         $this->assertEquals('Some', $result);
     }
 

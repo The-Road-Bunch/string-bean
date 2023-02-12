@@ -10,11 +10,11 @@ class PrefixTrimmer extends AbstractFormatter
         private readonly string $prefix
     ) {}
 
-    public function format(string $string): string
+    public function format(string $subject): string
     {
-        if (str_starts_with($string, $this->prefix)) {
-            return ltrim(substr($string, strlen($this->prefix)));
+        if (str_starts_with($subject, $this->prefix)) {
+            return ltrim(substr($subject, strlen($this->prefix)));
         }
-        return $string;
+        return $subject;
     }
 }

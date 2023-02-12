@@ -31,9 +31,9 @@ final class UpperCaseWordsFormatterTest extends TestCase
     public function testFormatList(): void
     {
         $formatter = new UpperCaseWordsFormatter();
-        $strings = ['first name', 'last_name', 'email-address', 'user.name'];
+        $subjects = ['first name', 'last_name', 'email-address', 'user.name'];
 
-        $result = $formatter->formatList(...$strings);
+        $result = $formatter->formatList(...$subjects);
         $this->assertEquals(['First Name', 'Last_Name', 'Email-Address', 'User.Name'], $result);
     }
 
