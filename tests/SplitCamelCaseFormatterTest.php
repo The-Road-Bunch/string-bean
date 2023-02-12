@@ -28,6 +28,12 @@ final class SplitCamelCaseFormatterTest extends TestCase
         ];
     }
 
+    public function testSetDelimiter(): void
+    {
+        $formatter = new SplitCamelCaseFormatter('_');
+        $this->assertEquals('a_String', $formatter->format('aString'));
+    }
+
     public function testSplitMultipleStrings(): void
     {
         $formatter = new SplitCamelCaseFormatter();
