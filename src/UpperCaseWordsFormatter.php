@@ -7,7 +7,7 @@ namespace RoadBunch\StringBean;
 class UpperCaseWordsFormatter extends AbstractFormatter
 {
     public function __construct(
-        private string|array $delimiter = [" ", "-", "_", "."],
+        private readonly string|array $delimiter = [" ", "-", "_", "."],
     ) {}
 
     public function format(string $subject): string
