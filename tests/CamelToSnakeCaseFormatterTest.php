@@ -22,13 +22,13 @@ class CamelToSnakeCaseFormatterTest extends TestCase
     {
         return [
             'no change' => ['already_snake', 'already_snake'],
-            'camel case to snake' => ['convertThisString', 'convert_This_String'],
+            'camelCase to snake_case' => ['convertThisString', 'convert_This_String'],
             'with acronym' => ['ConvertTHISString', 'Convert_THIS_String'],
             'with a space already' => ['has someSpaces inBetween words', 'has some_Spaces in_Between words'],
         ];
     }
 
-    public function testSplitMultipleStrings(): void
+    public function testFormatList(): void
     {
         $formatter = new CamelToSnakeCaseFormatter();
         $subjects = ['TestStringOne', 'TestStringTwo', 'TestStringThree'];
