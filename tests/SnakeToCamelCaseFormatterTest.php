@@ -12,10 +12,10 @@ use RoadBunch\StringBean\SnakeToCamelCaseFormatter;
 class SnakeToCamelCaseFormatterTest extends TestCase
 {
     #[DataProvider('stringProvider')]
-    public function testConvertSnakeToCamelCase(string $original, string $expected): void
+    public function testConvertSnakeToCamelCase(string $subject, string $expected): void
     {
         $formatter = new SnakeToCamelCaseFormatter();
-        $formatted = $formatter->format($original);
+        $formatted = $formatter->format($subject);
 
         $this->assertEquals($expected, $formatted);
     }
@@ -23,6 +23,7 @@ class SnakeToCamelCaseFormatterTest extends TestCase
     public static function stringProvider(): array
     {
         return [
+            'empty string' => ['', ''],
             'one word' => ['word', 'word'],
             'one word trailing underscore' => ['word_', 'word'],
             'with trailing underscore' => ['trailing_underscore_', 'trailingUnderscore'],

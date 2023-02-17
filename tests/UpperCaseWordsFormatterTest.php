@@ -12,15 +12,17 @@ use RoadBunch\StringBean\UpperCaseWordsFormatter;
 final class UpperCaseWordsFormatterTest extends TestCase
 {
     #[DataProvider('stringProvider')]
-    public function testConvertsLowerCaseToUpperCase(string $original, string $expected): void
+    public function testConvertsLowerCaseToUpperCase(string $subject, string $expected): void
     {
         $formatter = new UpperCaseWordsFormatter();
-        $this->assertEquals($expected, $formatter->format($original));
+        $this->assertEquals($expected, $formatter->format($subject));
     }
 
     public static function stringProvider(): array
     {
         return [
+            'empty string' => ['', ''],
+            'single word' => ['word', 'Word'],
             'dot' => ['user.name', 'User.Name'],
             'space' => ['first name', 'First Name'],
             'hyphen' => ['email-address', 'Email-Address'],

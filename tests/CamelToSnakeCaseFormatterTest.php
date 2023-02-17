@@ -12,15 +12,17 @@ use RoadBunch\StringBean\CamelToSnakeCaseFormatter;
 class CamelToSnakeCaseFormatterTest extends TestCase
 {
     #[DataProvider('stringProvider')]
-    public function testCamelToSnakeCase(string $original, string $expected): void
+    public function testCamelToSnakeCase(string $subject, string $expected): void
     {
         $formatter = new CamelToSnakeCaseFormatter();
-        $this->assertEquals($expected, $formatter->format($original));
+        $this->assertEquals($expected, $formatter->format($subject));
     }
 
     public static function stringProvider(): array
     {
         return [
+            'empty string' => ['', ''],
+            'one word' => ['word', 'word'],
             'no change' => ['already_snake', 'already_snake'],
             'camelCase to snake_case' => ['convertThisString', 'convert_This_String'],
             'with acronym' => ['ConvertTHISString', 'Convert_THIS_String'],

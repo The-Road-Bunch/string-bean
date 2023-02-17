@@ -12,19 +12,21 @@ use RoadBunch\StringBean\SplitCamelCaseFormatter;
 final class SplitCamelCaseFormatterTest extends TestCase
 {
     #[DataProvider('stringProvider')]
-    public function testSplitCamelCase(string $original, string $expected): void
+    public function testSplitCamelCase(string $subject, string $expected): void
     {
         $formatter = new SplitCamelCaseFormatter();
-        $this->assertEquals($expected, $formatter->format($original));
+        $this->assertEquals($expected, $formatter->format($subject));
     }
 
     public static function stringProvider(): array
     {
         return [
+            'empty string' => ['', ''],
             'no change' => ['stay_the_same', 'stay_the_same'],
-            'camel case' => ['testStringOne', 'test String One'],
+            'simple camel case' => ['testStringOne', 'test String One'],
             'acronyms' => ['WorksWITHAcronyms', 'Works WITH Acronyms'],
             'abbreviations' => ['WorksW.I.T.H.Abbreviations', 'Works W.I.T.H. Abbreviations'],
+            'with spaces' => ['This string hasSpaces', 'This string has Spaces'],
         ];
     }
 
