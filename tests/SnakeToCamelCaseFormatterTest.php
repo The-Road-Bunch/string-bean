@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 use RoadBunch\StringBean\SnakeToCamelCaseFormatter;
 
 #[CoversClass(SnakeToCamelCaseFormatter::class)]
-class SnakeToCamelCaseFormatterTest extends TestCase
+final class SnakeToCamelCaseFormatterTest extends TestCase
 {
     #[DataProvider('stringProvider')]
     public function testConvertSnakeToCamelCase(string $subject, string $expected): void
