@@ -10,8 +10,10 @@ abstract class AbstractFormatter implements FormatterInterface
 
     public function formatList(string ...$subject): array
     {
-        return array_map(function($val) {
-            return $this->format($val);
-        }, $subject);
+        $list = [];
+        foreach ($subject as $item) {
+            $list[] = $this->format($item);
+        }
+        return $list;
     }
 }
