@@ -36,4 +36,13 @@ final class PrefixTrimmerTest extends TestCase
         $result = $formatter->format($subject);
         $this->assertEquals('Words', $result);
     }
+
+    public function testTrimList(): void
+    {
+        $formatter = new PrefixTrimmer('pre');
+        $list = ['prefix', 'prep', 'premium'];
+
+        $result = $formatter->formatList(...$list);
+        $this->assertEquals(['fix', 'p', 'mium'], $result);
+    }
 }
